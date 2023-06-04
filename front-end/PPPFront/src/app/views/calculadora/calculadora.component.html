@@ -1,0 +1,104 @@
+<main class="container">
+  <div class="mt-3">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <!-- CAMPO DE POTENCIA DE CALCULADORA-->
+      <div class="mb-3">
+        <label for="potencia" class="form-label">Potencia (1 - 1000)</label>
+        <input type="number" class="form-control" id="potencia" formControlName="potencia" required>
+        <div *ngIf="form.get('potencia')?.hasError('required')" class="alert alert-danger mt-2">
+          La potencia es requerida.
+        </div>
+        <div *ngIf="form.get('potencia')?.hasError('max')" class="alert alert-danger mt-2">
+          La potencia debe ser menor o igual a 1000.
+        </div>
+        <div *ngIf="form.get('potencia')?.hasError('min')" class="alert alert-danger mt-2">
+          La potencia debe ser mayor o igual a 1.
+        </div>
+      </div>
+      <!-- CAMPO DE EFICIENCIA DE CALCULADORA-->
+      <div class="mb-3">
+        <label for="eficiencia" class="form-label">Eficiencia (0.1 - 1)</label>
+        <input type="number" class="form-control" id="eficiencia" formControlName="eficiencia" required>
+        <div *ngIf="form.get('eficiencia')?.hasError('required')" class="alert alert-danger mt-2">
+          La eficiencia es requerida.
+        </div>
+        <div *ngIf="form.get('eficiencia')?.hasError('max')" class="alert alert-danger mt-2">
+          La eficiencia debe ser menor o igual a 1.
+        </div>
+        <div *ngIf="form.get('eficiencia')?.hasError('min')" class="alert alert-danger mt-2">
+          La eficiencia debe ser mayor o igual a 0.1.
+        </div>
+      </div>
+      <!-- CAMPO DE HORAS DE SOL DE CALCULADORA-->
+      <div class="mb-3">
+        <label for="horasSolDia" class="form-label">Horas de Sol al Día (1 - 24)</label>
+        <input type="number" class="form-control" id="horasSolDia" formControlName="horasSolDia" required>
+        <div *ngIf="form.get('horasSolDia')?.hasError('required')" class="alert alert-danger mt-2">
+          Las horas de sol al dia son requeridas.
+        </div>
+        <div *ngIf="form.get('horasSolDia')?.hasError('max')" class="alert alert-danger mt-2">
+          Las horas de sol al dia deben ser menor o igual a 24.
+        </div>
+        <div *ngIf="form.get('horasSolDia')?.hasError('min')" class="alert alert-danger mt-2">
+          Las horas de sol al dia deben mayor o igual a 1.
+        </div>
+      </div>
+      <!-- CAMPO DEL COSTO DE ELECTRICIDAD DE CALCULADORA-->
+      <div class="mb-3">
+        <label for="costoElectricidad" class="form-label">Costo de la Electricidad (0.1 - 1)</label>
+        <input type="number" class="form-control" id="costoElectricidad" formControlName="costoElectricidad" required>
+        <div *ngIf="form.get('costoElectricidad')?.hasError('required')" class="alert alert-danger mt-2">
+          El costo de electricidad es requerido.
+        </div>
+        <div *ngIf="form.get('costoElectricidad')?.hasError('max')" class="alert alert-danger mt-2">
+          El costo de electricidad debe ser menor o igual a 1.
+        </div>
+        <div *ngIf="form.get('costoElectricidad')?.hasError('min')" class="alert alert-danger mt-2">
+          El costo de electricidad debe ser mayor o igual a 0.1.
+        </div>
+      </div>
+      <!-- CAMPO DE LA DIMENSION DE CALCULADORA-->
+      <div class="mb-3">
+        <label for="dimension" class="form-label">Dimensión (1 - ∞)</label>
+        <input type="number" class="form-control" id="dimension" formControlName="dimension" required>
+        <div *ngIf="form.get('dimension')?.hasError('required')" class="alert alert-danger mt-2">
+          La dimension es requerida.
+        </div>
+        <div *ngIf="form.get('dimension')?.hasError('min')" class="alert alert-danger mt-2">
+          La dimension debe ser mayor o igual a 1.
+        </div>
+      </div>
+      <!-- CAMPO DE CANTIDAD DE CALCULADORA-->
+      <div class="mb-3">
+        <label for="cantidad" class="form-label">Cantidad (1 - 100)</label>
+        <input type="number" class="form-control" id="cantidad" formControlName="cantidad" required>
+        <div *ngIf="form.get('cantidad')?.hasError('required')" class="alert alert-danger mt-2">
+          La cantidad es requerida.
+        </div>
+        <div *ngIf="form.get('cantidad')?.hasError('max')" class="alert alert-danger mt-2">
+          La cantidad debe ser menor o igual a 100.
+        </div>
+        <div *ngIf="form.get('cantidad')?.hasError('min')" class="alert alert-danger mt-2">
+          La cantidad debe ser mayor o igual a 1.
+        </div>
+      </div>
+      <!-- REALIZA LA ACCION DEL CALCULO-->
+      <button type="submit" class="btn btn-primary">Calcular</button>
+    </form>
+
+    <!-- CAMPO DE DIMESNION MEDIANTE SATELITE DE CALCULADORA-->
+    <div class="mt-4">
+      <h3>Mapa</h3>
+      <div #map id="map" style="height: 400px;"></div>
+    </div>
+
+    <!-- RESULTADOS DE CALCULADORA-->
+    <div *ngIf="resultado" class="mt-4">
+      <hr>
+      <h3 class="display-3">Resultado:</h3>
+      <p class="display-6">Ahorro de Energía: {{ resultado.ahorroEnergia }}Kwh</p>
+      <p class="display-6">Ahorro de Dinero: {{ resultado.ahorroDinero }}</p>
+    </div>
+  </div>
+
+</main>

@@ -1,0 +1,22 @@
+<main class="container">
+  <!-- COMPOR DE TIPO DE MANTENIMIENTO-->
+  <form [formGroup]="mantenimientoForm" (ngSubmit)="guardarCambios()">
+    <div class="mb-3 mt-3">
+      <label class="form-label" for="tipo_mantenimiento">Tipo de mantenimiento</label>
+      <input type="text" id="tipo_mantenimiento" class="form-control" formControlName="tipo_mantenimiento">
+      <div *ngIf="mantenimientoForm.get('tipo_mantenimiento')?.hasError('required')" class="alert alert-danger mt-2">
+        El tipo de mantenimiento es requerido.
+      </div>
+    </div>
+    <!-- CAMPO DE FECHA DE MANTENIMIENTO-->
+    <div class="mb-3">
+      <label class="form-label" for="fecha_mantenimiento">Fecha del mantenimiento</label>
+      <input type="date" id="fecha_mantenimiento" class="form-control" formControlName="fecha_mantenimiento">
+      <div *ngIf="mantenimientoForm.get('fecha_mantenimiento')?.errors?.['invalidDate']" class="alert alert-danger mt-2">
+        El mantenimiento debe ser mínimo posterior a un mes respecto a la fecha actual.
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+  </form>
+</main>
+

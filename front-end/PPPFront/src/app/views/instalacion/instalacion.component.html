@@ -1,0 +1,28 @@
+<main class="container">
+  <br>
+  <section id="instalaciones">
+    <!-- BOTON PARA CREAR INSTALACIONES-->
+    <div>
+      <a routerLink="addInstalacion" type="button" class="btn btn-primary text-decoration-none text-white">Añadir
+        Instalación</a>
+    </div>
+    <!-- MUESTRA LAS INSTALACIONES EXISTENTES-->
+    <main class="container">
+      <div class="row">
+        <div *ngFor="let instalacion of instalaciones" class="container mt-3 col">
+          <div class="card h-90 shadow-sm border rounded-3" style="width:300px">
+            <div class="card-body">
+              <h4 class="card-title">{{instalacion.nombre_instalacion}}</h4>
+              <p class="card-title">Inclinación: {{instalacion.inclinacion}}</p>
+              <p class="card-title">Orientacion: {{instalacion.orientacion}}</p>
+              <p class="card-title">Fecha de instalación: {{instalacion.fecha_instalacion}}</p>
+              <a [routerLink]="['/instalacion/editInstalacion', instalacion.id_instalacion]" class="me-2 btn btn-secondary">Edit</a>
+              <a (click)="eliminarInstalacion(instalacion.id_instalacion)" class="btn btn-secondary">Delete</a>
+            </div>
+          </div>
+          <br>
+        </div>
+      </div>
+    </main>
+  </section>
+</main>

@@ -1,0 +1,27 @@
+<main class="container">
+  <br>
+  <section id="productos">
+    <!-- AÑADE UN PRODUCTO NUEVO-->
+    <div>
+      <a routerLink="addProducto" type="button" class="btn btn-primary text-decoration-none text-white">Añadir
+        producto</a>
+    </div>
+    <!-- MUESTRA EL CATALOGO DE PRODUCTOS-->
+    <main class="container">
+      <div class="row">
+        <div *ngFor="let producto of productos" class="container mt-3 col">
+          <div class="card h-90 shadow-sm border rounded-3" style="width:300px">
+            <img class="card-img-top" height="400px" [src]="getImageUrl(producto.modelo)" (click)="selectImage(producto.modelo)">
+            <div class="card-body">
+              <h4 class="card-title">{{producto.modelo}}</h4>
+              <a [routerLink]="['/catalogo/viewProducto', producto.id_producto]" class="me-2 btn btn-secondary">View</a>
+              <a [routerLink]="['/catalogo/editProducto', producto.id_producto]" class="me-2 btn btn-secondary">Edit</a>
+              <a (click)="eliminarProducto(producto.id_producto)" class="btn btn-secondary">Delete</a>
+            </div>
+          </div>
+          <br>
+        </div>
+      </div>
+    </main>
+  </section>
+</main>

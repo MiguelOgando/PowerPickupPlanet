@@ -1,0 +1,99 @@
+<main class="container mt-3">
+  <form [formGroup]="productoForm" (ngSubmit)="guardarCambios()">
+    <!-- CAMPO DE MARCA DEL PRODUCTO-->
+    <div class="mb-3">
+      <label class="form-label" for="marca">Marca</label>
+      <select id="marca" class="form-control" formControlName="marca">
+        <option *ngFor="let marca of marcas" [value]="marca.value">{{ marca.label }}</option>
+      </select>
+    </div>
+    <!-- CAMPO DEL MODLEO DE PRODUCTO-->
+    <div class="mb-3">
+      <label class="form-label" for="modelo">Modelo</label>
+      <select id="modelo" class="form-control" formControlName="modelo">
+        <ng-container *ngFor="let modelo of modelos">
+          <ng-container *ngIf="modelo.marca === productoForm.value.marca">
+            <option *ngFor="let m of modelo.modelos" [value]="m">{{ m }}</option>
+          </ng-container>
+        </ng-container>
+      </select>
+    </div>
+    <!-- CAMPO DE DIMENSION DE PRODUCTO-->
+    <div class="mb-3">
+      <label class="form-label" for="dimension">Dimension (1 - ∞)</label>
+      <input type="text" id="dimension" class="form-control" formControlName="dimension" required>
+      <div *ngIf="productoForm.get('dimension')?.hasError('required')" class="alert alert-danger mt-2">
+        La dimension es requerida.
+      </div>
+      <div *ngIf="productoForm.get('dimension')?.hasError('min')" class="alert alert-danger mt-2">
+        La dimension debe ser mayor o igual a 1.
+      </div>
+    </div>
+    <!-- CAMPO DE CANTIDAD DE PRODUCTO-->
+    <div class="mb-3">
+      <label class="form-label" for="cantidad">Cantidad (1 - 100)</label>
+      <input type="text" id="cantidad" class="form-control" formControlName="cantidad" required>
+      <div *ngIf="productoForm.get('cantidad')?.hasError('required')" class="alert alert-danger mt-2">
+        La cantidad es requerida.
+      </div>
+      <div *ngIf="productoForm.get('cantidad')?.hasError('max')" class="alert alert-danger mt-2">
+        La cantidad debe ser menor o igual a 100.
+      </div>
+      <div *ngIf="productoForm.get('cantidad')?.hasError('min')" class="alert alert-danger mt-2">
+        La cantidad debe ser mayor o igual a 1.
+      </div>
+    </div>
+    <!-- CAMPO DE POTENCIA DE PRODUCTO-->
+    <div class="mb-3">
+      <label class="form-label" for="potencia">Potencia (1 - 1000)</label>
+      <input type="text" id="potencia" class="form-control" formControlName="potencia" required>
+      <div *ngIf="productoForm.get('potencia')?.hasError('required')" class="alert alert-danger mt-2">
+        La potencia es requerida.
+      </div>
+      <div *ngIf="productoForm.get('potencia')?.hasError('max')" class="alert alert-danger mt-2">
+        La potencia debe ser menor o igual a 1000.
+      </div>
+      <div *ngIf="productoForm.get('potencia')?.hasError('min')" class="alert alert-danger mt-2">
+        La potencia debe ser mayor o igual a 1.
+      </div>
+    </div>
+    <!-- CAMPO DE EFICIENCIA DE PRODUCTO-->
+    <div class="mb-3">
+      <label class="form-label" for="eficiencia">Eficiencia (0.1 - 1)</label>
+      <input type="text" id="eficiencia" class="form-control" formControlName="eficiencia" required>
+      <div *ngIf="productoForm.get('eficiencia')?.hasError('required')" class="alert alert-danger mt-2">
+        La eficiencia es requerida.
+      </div>
+      <div *ngIf="productoForm.get('eficiencia')?.hasError('max')" class="alert alert-danger mt-2">
+        La eficiencia debe ser menor o igual a 1.
+      </div>
+      <div *ngIf="productoForm.get('eficiencia')?.hasError('min')" class="alert alert-danger mt-2">
+        La eficiencia debe ser mayor o igual a 0.1.
+      </div>
+    </div>
+    <!-- CAMPO DEL TIPO DE MANTENIMIENTO PARA EL PRODUCTO-->
+    <div formGroupName="mantenimiento">
+      <div class="mb-3">
+        <label for="mantenimiento.id_mantenimiento">Tipo de mantenimiento</label>
+        <select id="mantenimiento.id_mantenimiento" class="form-control" formControlName="id_mantenimiento">
+          <option value="">No</option>
+          <option *ngFor="let mantenimiento of mantenimientos" [value]="mantenimiento.id_mantenimiento">{{
+            mantenimiento.tipo_mantenimiento }}</option>
+        </select>
+      </div>
+    </div>
+    <!-- CAMPO DE INSTALACION PARA EL PRODUCTO-->
+    <div formGroupName="instalacion">
+      <div class="mb-3">
+        <label for="instalacion.id_instalacion">Instalación</label>
+        <select id="instalacion.id_instalacion" class="form-control" formControlName="id_instalacion">
+          <option value="">No</option>
+          <option *ngFor="let instalacion of instalaciones" [value]="instalacion.id_instalacion">{{
+            instalacion.nombre_instalacion }}</option>
+        </select>
+      </div>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+  </form>
+</main>

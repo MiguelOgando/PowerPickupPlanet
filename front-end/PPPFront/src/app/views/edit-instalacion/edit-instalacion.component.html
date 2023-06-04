@@ -1,0 +1,56 @@
+<main class="container">
+  <form [formGroup]="instalacionForm" (ngSubmit)="guardarCambios()">
+    <!-- CAMPO DE NOMBRE DE INSTALACION-->
+    <div class="mb-3 mt-3">
+      <label class="form-label" for="nombre_instalacion">Nombre</label>
+      <input class="form-control" type="text" id="nombre_instalacion" class="form-control" formControlName="nombre_instalacion">
+      <div *ngIf="instalacionForm.get('nombre_instalacion')?.hasError('required')" class="alert alert-danger mt-2">
+        El nombre es requerido.
+      </div>
+    </div>
+    <!-- CAMPO DE FECHA DE INSTALACION-->
+    <div class="mb-3">
+      <label class="form-label" for="fecha_instalacion">Fecha de Instalación</label>
+      <input class="form-control" type="date" id="fecha_instalacion" class="form-control" formControlName="fecha_instalacion">
+      <div *ngIf="instalacionForm.get('fecha_instalacion')?.errors?.['fechaMenor']" class="alert alert-danger mt-2">
+        La fecha seleccionada debe ser igual o mayor a la fecha actual.
+      </div>
+    </div>
+    <!-- CAMPO DE ORIENTACION DE INSTALACION-->
+    <div class="mb-3">
+      <label class="form-label" for="orientacion">Orientación (0 - 360)</label>
+      <input class="form-control" type="number" id="orientacion" class="form-control" formControlName="orientacion">
+      <div *ngIf="instalacionForm.get('orientacion')?.hasError('required')" class="alert alert-danger mt-2">
+        La orientacion es requerida.
+      </div>
+      <div *ngIf="instalacionForm.get('orientacion')?.hasError('max')" class="alert alert-danger mt-2">
+        La orientacion debe ser menor o igual a 360.
+      </div>
+      <div *ngIf="instalacionForm.get('orientacion')?.hasError('min')" class="alert alert-danger mt-2">
+        La orientacion debe ser mayor o igual a 0.
+      </div>
+    </div>
+    <!-- CAMPO DE INCLINACION DE INSTALACION-->
+    <div class="mb-3">
+      <label class="form-label" for="inclinacion">Inclinación (0 - 90)</label>
+      <input class="form-control" type="number" id="inclinacion" class="form-control" formControlName="inclinacion">
+      <div *ngIf="instalacionForm.get('inclinacion')?.hasError('required')" class="alert alert-danger mt-2">
+        La inclinacion es requerida.
+      </div>
+      <div *ngIf="instalacionForm.get('inclinacion')?.hasError('max')" class="alert alert-danger mt-2">
+        La inclinacion debe ser menor o igual a 90.
+      </div>
+      <div *ngIf="instalacionForm.get('inclinacion')?.hasError('min')" class="alert alert-danger mt-2">
+        La inclinacion debe ser mayor o igual a 0.
+      </div>
+    </div>
+    <!-- CAMPO DE SISTEMA DE MONTAJE DE INCLINACION-->
+    <div class="mb-3 form-check form-switch">
+      <label class="form-check-label" for="sistema_montaje">Sistema de montaje</label>
+      <input class="form-check-input" type="checkbox" role="switch" id="sistema_montaje" formControlName="sistema_montaje">
+    </div>
+    <!-- ACTUALIZA LA INSTALACION-->
+    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+  </form>
+</main>
+

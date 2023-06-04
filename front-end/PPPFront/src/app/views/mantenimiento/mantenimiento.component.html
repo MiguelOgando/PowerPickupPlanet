@@ -1,0 +1,26 @@
+<main class="container">
+  <br>
+  <section id="mantenimientos">
+    <!-- CREA MANTENIMIENTO-->
+    <div>
+      <a routerLink="addMantenimiento" type="button" class="btn btn-primary text-decoration-none text-white">Añadir
+        Mantenimiento</a>
+    </div>
+    <!-- MUESTRA TODO EL MANTENIMIENTO EXISTENTE-->
+    <main class="container">
+      <div class="row">
+        <div *ngFor="let mantenimiento of mantenimientos" class="container mt-3 col">
+          <div class="card h-90 shadow-sm border rounded-3" style="width:300px">
+            <div class="card-body">
+              <h4 class="card-title">{{mantenimiento.tipo_mantenimiento}}</h4>
+              <p class="card-title">Fecha del mantenimiento: {{mantenimiento.fecha_mantenimiento}}</p>
+              <a [routerLink]="['/mantenimiento/editMantenimiento', mantenimiento.id_mantenimiento]" class="me-2 btn btn-secondary">Edit</a>
+              <a (click)="eliminarMantenimiento(mantenimiento.id_mantenimiento)" class="btn btn-secondary">Delete</a>
+            </div>
+          </div>
+          <br>
+        </div>
+      </div>
+    </main>
+  </section>
+</main>

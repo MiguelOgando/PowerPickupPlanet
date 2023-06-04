@@ -1,0 +1,26 @@
+<main style="margin-top: 50px;" class="container">
+  <div class="row">
+    <div class="col-4"></div>
+    <div class="col-5">
+      <h2>Login</h2>
+      <form (ngSubmit)="login()" #loginForm="ngForm">
+        <!-- CAMPO DEL EMAIL PARA LOGIN-->
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" name="email" [(ngModel)]="email" required>
+        </div>
+        <!-- CAMPO DE PASSWORD PARA LOGIN-->
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password" required>
+        </div>
+        <!-- ERROR POR SI EL USUARIO NO ES VALIDO-->
+        <div *ngIf="mostrarError" class="alert alert-warning">
+          Usuario no válido
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+    </div>
+    <div class="col-4"></div>
+  </div>
+</main>
