@@ -16,71 +16,71 @@ La distribucion del contenido se divide en dos partes principalmente. La parte d
   * shared -- directorio
     * interface -- directorio
       * producto -- directorio
-        * [completeProducto](./src/app/shared/interface/producto/completeProducto.ts) -- interfaz
+        * completeProducto-- interfaz
           * Vista de un producto
-        * [listProducto](./src/app/shared/interface/producto/listProducto.ts) -- interfaz
+        * listProducto -- interfaz
           * Listado de los producto de forma general
-        * [marca](./src/app/shared/interface/producto/marca.ts) -- interfaz
+        * marca -- interfaz
           * Atributo de la entidad producto
-        * [modelo](./src/app/shared/interface/producto/modelo.ts) -- interfaz
+        * modelo -- interfaz
           * Atributo de la entidad producto
-        * [newProducto](./src/app/shared/interface/producto/newProducto.ts) -- interfaz
+        * newProducto -- interfaz
           * Formulario para un producto
       * usuario -- directorio
-        * [login-usuario](./src/app/shared/interface/usuario/login-usuario.ts) -- interfaz
+        * login-usuario -- interfaz
           * Registro de un usuario a la aplicacion web
         * new-usuario
-      * [calculadora](./src/app/shared/interface/calculadora.ts) -- interfaz
+      * calculadora -- interfaz
         * Formulario para la realizacion del calculo
-      * [instalacion](./src/app/shared/interface/instalacion.ts) -- interfaz
+      * instalacion -- interfaz
         * Formulario y Listado de las instalaciones
-      * [mantenimiento](./src/app/shared/interface/mantenimiento.ts) -- interfaz
+      * mantenimiento -- interfaz
         * Formulario y Listado de los mantenimientos
     * service
-      * [calculadora](./src/app/shared/service/calculadora/calculadora.service.ts)
+      * calculadora
         * Conecta con el backend y realiza los calculos
-      * [instalacion](./src/app/shared/service/instalacion/instalacion.service.ts)
+      * instalacion
         * Conecta con el backend y realiza el CRUD de instalacion
-      * [mantenimiento](./src/app/shared/service/mantenimiento/mantenimiento.service.ts)
+      * mantenimiento
         * Conecta con el backend y realiza el CRUD de mantenimiento
-      * [producto](./src/app/shared/service/producto/producto.service.ts)
+      * producto
         * Conecta con el backend y realiza el CRUD de producto
       * seguridad
         * AuthGuard
           * Se encarga de la seguridad de parte del cliente
-            * [Guard](./src/app/shared/service/seguridad/auth.guard.ts)
-            * [Service del guard](./src/app/shared/service/seguridad/auth.service.ts)
-        * [User](./src/app/shared/service/seguridad/user.service.ts)
+            * Guard
+            * Service del guard
+        * User
           * Conecta con el backend y realiza el login del usuario
   * views -- directorio
-    * [welcome](./src/app/views/welcome/) -- componente
+    * welcome -- componente
       * Pagina de inicio
-    * [calculadora](./src/app/views/calculadora/) -- componente
+    * calculadora -- componente
       * Vista y procesos de calculo para el ahorro de dinero y energia producido por un panel solar
     * catalogo
-      * [catalogo](./src/app/views/catalogo/) -- componente
+      * catalogo -- componente
         * Muestra todos los productos
-      * [edit-producto](./src/app/views/edit-producto/) -- componente
+      * edit-producto -- componente
         * Editado de un mantenimiento por su id
-      * [new-producto](./src/app/views/new-producto/) -- componente
+      * new-producto -- componente
         * Crea un nuevo producto
     * mantenimiento
-      * [mantenimiento](./src/app/views/mantenimiento/) -- componente
+      * mantenimiento -- componente
         * Muestra todos los mantenimientos
-      * [edit-mantenimiento](./src/app/views/edit-mantenimiento/) -- componente
+      * edit-mantenimiento -- componente
         * Editado de un mantenimiento por su id
-      * [new-mantenimiento](./src/app/views/new-mantenimiento/) -- componente
+      * new-mantenimiento -- componente
         * Crea un nuevo mantenimiento
     * instalacion
-      * [instalacion](./src/app/views/instalacion/) -- componente
+      * instalacion -- componente
         * Muestra todas las instalaciones
-      * [edit-instalacion](./src/app/views/edit-instalacion/) -- componente
+      * edit-instalacion -- componente
         * Editado de un mantenimiento por su id
-      * [new-instalacion](./src/app/views/new-instalacion/) -- componente
+      * new-instalacion -- componente
         * Crea una nueva instalacion
-    * [login](./src/app/views/login/) -- componente
+    * login -- componente
       * Se realiza el registro de un usuario existente
-    * [error](./src/app/views/error/) -- componente
+    * error -- componente
       * En caso de acceder a una direccion erronea se gestiona el error
 * assets
 Se guardan las imagenes que van a ser usadas en toda la aplicacion a excepcion del favicon
